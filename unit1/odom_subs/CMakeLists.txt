@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   test_library
+  velocity_library
 )
 
 ## System dependencies are found with CMake's conventions
@@ -210,5 +211,11 @@ include_directories(
 add_executable(odom_listener src/odom_listener.cpp)
 add_dependencies(odom_listener nav_msgs_generate_messages_cpp)
  target_link_libraries(odom_listener
+   ${catkin_LIBRARIES}
+)
+
+add_executable(odom_vel_listener src/odom_vel_listener.cpp)
+add_dependencies(odom_vel_listener nav_msgs_generate_messages_cpp)
+ target_link_libraries(odom_vel_listener
    ${catkin_LIBRARIES}
 )
