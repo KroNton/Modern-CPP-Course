@@ -209,3 +209,9 @@ add_dependencies(robot_position_as_array nav_msgs_generate_messages_cpp)
  target_link_libraries(robot_position_as_array
    ${catkin_LIBRARIES}
 )
+
+add_executable(robot_heading_as_vector src/robot_heading_as_vector.cpp)
+add_dependencies(robot_heading_as_vector nav_msgs_generate_messages_cpp)
+ target_link_libraries(robot_heading_as_vector
+   ${catkin_LIBRARIES}
+)
