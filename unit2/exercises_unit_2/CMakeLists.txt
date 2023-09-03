@@ -215,3 +215,9 @@ add_dependencies(robot_heading_as_vector nav_msgs_generate_messages_cpp)
  target_link_libraries(robot_heading_as_vector
    ${catkin_LIBRARIES}
 )
+
+add_executable(robot_heading_as_deque src/robot_heading_as_deque.cpp)
+add_dependencies(robot_heading_as_deque nav_msgs_generate_messages_cpp)
+ target_link_libraries(robot_heading_as_deque
+   ${catkin_LIBRARIES}
+)
