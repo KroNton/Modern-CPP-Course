@@ -221,3 +221,9 @@ add_dependencies(robot_heading_as_deque nav_msgs_generate_messages_cpp)
  target_link_libraries(robot_heading_as_deque
    ${catkin_LIBRARIES}
 )
+
+add_executable(path_coordinates src/path_coordinates.cpp)
+add_dependencies(path_coordinates nav_msgs_generate_messages_cpp)
+ target_link_libraries(path_coordinates
+   ${catkin_LIBRARIES}
+)
