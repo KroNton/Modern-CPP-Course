@@ -227,3 +227,9 @@ add_dependencies(path_coordinates nav_msgs_generate_messages_cpp)
  target_link_libraries(path_coordinates
    ${catkin_LIBRARIES}
 )
+
+add_executable(path_coordinates_map src/path_coordinates_map.cpp)
+add_dependencies(path_coordinates_map nav_msgs_generate_messages_cpp)
+ target_link_libraries(path_coordinates_map
+   ${catkin_LIBRARIES}
+)
