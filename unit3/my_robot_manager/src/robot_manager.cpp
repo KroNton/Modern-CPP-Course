@@ -4,7 +4,7 @@
 
 RobotManager::RobotManager(ros::NodeHandle *nh){
 
-    odom_subscriber= nh->subscribe("/odom",50,&RobotManager::odom_callback,this);
+    odom_subscriber= nh->subscribe(odometry_topic,50,&RobotManager::odom_callback,this);
 
     
 }

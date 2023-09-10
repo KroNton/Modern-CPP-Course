@@ -8,7 +8,7 @@ class RobotManager {
 private:
     float current_x_position;
     float current_y_position;
-    std::string odometry_topic="/robot1/odom";
+    std::string odometry_topic="/odom";
     ros::Subscriber odom_subscriber;
 
 public:
