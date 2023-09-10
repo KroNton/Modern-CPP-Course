@@ -2,6 +2,7 @@
 #include <ros/ros.h>
 #include <string>
 
+
 class RobotManager {
 
 private:
@@ -13,8 +14,6 @@ private:
 public:
     RobotManager(ros::NodeHandle *nh);
     void odom_callback(const nav_msgs::Odometry::ConstPtr &msg);
-
-
 
 
 };
