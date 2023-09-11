@@ -15,6 +15,7 @@ private:
 public:
     RobotManager(ros::NodeHandle *nh,std::string name,std::string odom_topic);
     void odom_callback(const nav_msgs::Odometry::ConstPtr &msg);
+    static int robot_count;
 
 
 };
