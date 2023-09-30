@@ -16,8 +16,13 @@ RobotManager::RobotManager(ros::NodeHandle *nh,std::string name,std::string odom
 void RobotManager::odom_callback(const nav_msgs::Odometry::ConstPtr &odom_msg){
     current_x_position= odom_msg->pose.pose.position.x;
     current_y_position= odom_msg->pose.pose.position.y;
-    ROS_INFO("%s Position (x,y): %lf , %lf",robot_name.c_str(), current_x_position, current_y_position);
+    // ROS_INFO("%s Position (x,y): %lf , %lf",robot_name.c_str(), current_x_position, current_y_position);
+
 }
 
+void RobotManager::get_coords(int param){
+
+ ROS_INFO("%s Position (x,y): %lf , %lf",robot_name.c_str(), current_x_position, current_y_position);   
+}
 
 
