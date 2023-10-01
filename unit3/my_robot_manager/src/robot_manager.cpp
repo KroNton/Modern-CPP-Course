@@ -11,18 +11,29 @@ RobotManager::RobotManager(ros::NodeHandle *nh,std::string name,std::string odom
     odom_subscriber= nh->subscribe(odometry_topic,50,&RobotManager::odom_callback,this);
     robot_count++;
     ROS_INFO("Robot %d created", robot_count);
+   
 }
 
 void RobotManager::odom_callback(const nav_msgs::Odometry::ConstPtr &odom_msg){
-    current_x_position= odom_msg->pose.pose.position.x;
-    current_y_position= odom_msg->pose.pose.position.y;
-    // ROS_INFO("%s Position (x,y): %lf , %lf",robot_name.c_str(), current_x_position, current_y_position);
+   
+   current_x_position= odom_msg->pose.pose.position.x;
+   current_y_position= odom_msg->pose.pose.position.y;
+    
 
 }
 
-void RobotManager::get_coords(int param){
+std::string RobotManager::get_robot_name(){
+    return robot_name;
+}
 
- ROS_INFO("%s Position (x,y): %lf , %lf",robot_name.c_str(), current_x_position, current_y_position);   
+float RobotManager::get_coords(int param){
+
+  if (param == 1) {
+    return this->current_x_position;
+  } else if (param == 2) {
+    return this->current_y_position;
+  } 
+  return 0;
 }
 
 
