@@ -1,3 +1,6 @@
+#ifndef ROBOT_MANGER_H
+#define ROBOT_MANGER_H
+
 #include <nav_msgs/Odometry.h>
 #include <ros/ros.h>
 #include <string>
@@ -22,3 +25,5 @@ public:
     
 
 };
+
+#endif
