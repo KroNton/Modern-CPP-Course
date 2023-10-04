@@ -76,7 +76,8 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "*._2cpp": "cpp"
     },
     "cmake.configureOnOpen": false
 }
