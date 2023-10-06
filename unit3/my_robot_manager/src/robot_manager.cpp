@@ -7,16 +7,17 @@
 int RobotManager::robot_count=0;
 
 //parmeterized constructor
-RobotManager::RobotManager(ros::NodeHandle *nh,std::string robot_name,std::string cmd_vel_topic,std::string odometry_topic){
-    odometry_topic=this->odometry_topic;
-    robot_name= this->robot_name;
-    cmd_vel_topic=this->cmd_vel_topic;
+RobotManager::RobotManager(ros::NodeHandle *nh,std::string RobotName,std::string CmdVelTopic,std::string OdometryTopic){
+    odometry_topic=OdometryTopic;
+    robot_name= RobotName;
+    cmd_vel_topic=CmdVelTopic;
 
     odom_subscriber= nh->subscribe(odometry_topic,50,&RobotManager::odom_callback,this);
     cmd_vel_publisher=nh->advertise<geometry_msgs::Twist>(cmd_vel_topic, 10);
     robot_count++;
     ROS_INFO("Robot %d created", robot_count);
-   
+    ROS_INFO("Node initialized.....");
+    usleep(2000000);
 }
 
 // Copy constructor
@@ -32,7 +33,7 @@ void RobotManager::odom_callback(const nav_msgs::Odometry::ConstPtr &odom_msg){
    
    current_x_position= odom_msg->pose.pose.position.x;
    current_y_position= odom_msg->pose.pose.position.y;
-    
+    // ROS_INFO("%s Position (x,y): %lf , %lf","robot", current_x_position,  current_y_position); 
 }
 
 
@@ -45,9 +46,9 @@ void RobotManager::move_forward(int seconds){
   ros::Rate loop_rate(10);
   ros::Time start_time = ros::Time::now();
   ros::Duration timeout(seconds);
-  
   while ((ros::Time::now() - start_time)<timeout)
   {
+    ROS_INFO_STREAM("Moving forwards ........... ");
     ros::spinOnce();
     vel_msg.linear.x=0.4;
     cmd_vel_publisher.publish(vel_msg);
@@ -61,11 +62,13 @@ void RobotManager::move_forward(int seconds){
 
 
 void RobotManager::move_backward(int seconds){
+
   ros::Rate loop_rate(10);
   ros::Time start_time = ros::Time::now();
   ros::Duration timeout(seconds);
   while ((ros::Time::now() - start_time)<timeout)
   {
+    ROS_INFO_STREAM("Moving backwards ........... ");
     ros::spinOnce();
     vel_msg.linear.x=-0.4;
     cmd_vel_publisher.publish(vel_msg);
@@ -102,6 +105,7 @@ void RobotManager::turn(std::string clock, int n_secs){
     ros::spinOnce();
     vel_msg.angular.z = CW;
     cmd_vel_publisher.publish(vel_msg);
+
     loop_rate.sleep();
   }
   vel_msg.linear.x=0.0;
@@ -113,10 +117,14 @@ void RobotManager::turn(std::string clock, int n_secs){
 
 
 float RobotManager::get_coords(int param){
-
+  
   if (param == 1) {
+
+    // ros::spinOnce();
     return this->current_x_position;
+    
   } else if (param == 2) {
+    // ros::spinOnce();
     return this->current_y_position;
   } 
   return 0;
