@@ -1,8 +1,8 @@
 #include "robot_manager_inheritance/base_robot_manager.h"
 
-RobotManagerBase::init_config_output_srv(){
+void RobotManagerBase::init_config_output_srv(ros::NodeHandle *nh){
     config_output_srv = nh->advertiseService("robot_manager_output", &RobotManagerBase::ConfigOutputCallback, this);
-
+    
 }
 
 bool RobotManagerBase::ConfigOutputCallback(
