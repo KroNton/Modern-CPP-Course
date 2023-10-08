@@ -7,8 +7,7 @@ int main(int argc, char  **argv)
 {
     ros::init(argc, argv, "robot_manager");
     ros::NodeHandle nh;
-    RobotManagerBase robot;
-    robot.init_config_output_srv(&nh);
+    RobotManagerMobile robot(&nh);
     ros::spin();
     return 0;
 }

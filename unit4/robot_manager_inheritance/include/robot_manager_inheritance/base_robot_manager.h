@@ -18,7 +18,13 @@ public:
     bool ConfigOutputCallback(std_srvs::SetBoolRequest &req, std_srvs::SetBoolResponse &response);
 };
 
+class RobotManagerMobile : public RobotManagerBase{
 
+
+public:
+    RobotManagerMobile(ros::NodeHandle *nh);
+
+};
 
 
 #endif

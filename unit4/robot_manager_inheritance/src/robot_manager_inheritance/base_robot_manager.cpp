@@ -29,3 +29,8 @@ bool RobotManagerBase::ConfigOutputCallback(
   }
   return true;
 }
+
+RobotManagerMobile::RobotManagerMobile(ros::NodeHandle *nh){
+init_config_output_srv(nh);
+
+}
