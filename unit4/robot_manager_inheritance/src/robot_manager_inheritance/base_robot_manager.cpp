@@ -30,8 +30,9 @@ bool RobotManagerBase::ConfigOutputCallback(
   return true;
 }
 
-RobotManagerMobile::RobotManagerMobile(ros::NodeHandle *nh,std::string odom_topic){
-odometry_topic=odom_topic;
+RobotManagerMobile::RobotManagerMobile(ros::NodeHandle *nh,std::string odom_topic)
+:odometry_topic(odom_topic){
+
 init_config_output_srv(nh);
 init_odom_subscriber(nh);
 }
