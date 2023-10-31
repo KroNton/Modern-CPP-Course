@@ -4,12 +4,17 @@ void RobotManagerBase::init_config_output_srv(ros::NodeHandle *nh){
     config_output_srv = nh->advertiseService("robot_manager_output", &RobotManagerBase::ConfigOutputCallback, this);
     
 }
+void RobotManagerBase::displayRobotDetails(){
+  
+  std::cout<< "Robot Name: "<< robot_name<< "\n"<<"Robot Location: "<<robot_location<<std::endl;
+
+}
 
 bool RobotManagerBase::ConfigOutputCallback(
     std_srvs::SetBoolRequest &req, std_srvs::SetBoolResponse &response) {
         
   bool request = req.data;
-
+  displayRobotDetails();
   // Check if request is same as current output configuration
   if (request == output_enabled) {
     response.success = false;
@@ -31,10 +36,12 @@ bool RobotManagerBase::ConfigOutputCallback(
 }
 
 RobotManagerMobile::RobotManagerMobile(ros::NodeHandle *nh,std::string odom_topic)
-:odometry_topic(odom_topic){
+:odometry_topic(odom_topic)
+{
 
 init_config_output_srv(nh);
 init_odom_subscriber(nh);
+displayRobotDetails();
 }
 
 void RobotManagerMobile::init_odom_subscriber(ros::NodeHandle *nh){
