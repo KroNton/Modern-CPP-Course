@@ -16,7 +16,7 @@ protected:
     bool output_enabled=false;
     std::string robot_name="Kronton Robot";
     std::string robot_location="Emeryville, California";
-
+    virtual void displayRobotDetails()=0;
 
 
 public:
@@ -24,7 +24,7 @@ public:
     // ~RobotManagerBase();
     void init_config_output_srv(ros::NodeHandle *nh);
     bool ConfigOutputCallback(std_srvs::SetBoolRequest &req, std_srvs::SetBoolResponse &response);
-    virtual void displayRobotDetails();
+    
 };
 
 
