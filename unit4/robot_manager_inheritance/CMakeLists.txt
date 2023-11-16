@@ -205,6 +205,10 @@ install(DIRECTORY include/${PROJECT_NAME}/
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(base_robot_manager_node src/base_robot_manager_node.cpp src/${PROJECT_NAME}/base_robot_manager.cpp)
+add_executable(base_robot_manager_node 
+src/base_robot_manager_node.cpp 
+src/${PROJECT_NAME}/mobile_robot_manager.cpp
+src/${PROJECT_NAME}/base_robot_manager.cpp
+)
 
- target_link_libraries(base_robot_manager_node ${catkin_LIBRARIES} robot_manager_inheritance)
+ target_link_libraries(base_robot_manager_node ${catkin_LIBRARIES} ${PROJECT_NAME})
